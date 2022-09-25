@@ -34,7 +34,11 @@ function playSound(name) {
 
 //button animation
 function animateOnPress(currentColor) {
-    $("#" + currentColor).addClass("pressed");
+    let btnSelector = $("#" + currentColor);
+    btnSelector.addClass("pressed");
+    setTimeout(function () {
+        btnSelector.removeClass("pressed")
+    }, 500);
 
 }
 // nextSequence();
