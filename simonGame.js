@@ -21,14 +21,29 @@ $(document).keypress(function () {
 
 $(".btn").click(function () {
     var userChoosenColor = $(this).attr("id");
-    console.log(userChoosenColor);
+    //console.log(userChoosenColor);
     userClickedPattern.push(userChoosenColor);
     playSound(userChoosenColor);
     animateOnPress(userChoosenColor);
-    console.log(userClickedPattern);
+    checkAnswer(userClickedPattern.length - 1);
+    //console.log(userClickedPattern);
 });
 
+//Checking the answer 
+function checkAnswer(currentLevel) {
+    if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
+        console.log("success, correct color choosen");
+        if (userClickedPattern.length === gamePattern.length) {
+            setTimeout(nextSequence(), 1000);
+        }
+
+    } else {
+        console.log("Choose correct color first");
+    }
+}
+
 function nextSequence() {
+    userClickedPattern = [];
     level++;
     $("#level-title").text("Level " + level);
     var randomNumber = Math.floor(Math.random() * 4);
@@ -57,4 +72,6 @@ function animateOnPress(currentColor) {
     }, 100);
 
 }
+
+
 // nextSequence();
