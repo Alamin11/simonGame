@@ -31,15 +31,34 @@ $(".btn").click(function () {
 
 //Checking the answer 
 function checkAnswer(currentLevel) {
+    //Check the user clicked sequence with the game pattern
     if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
-        console.log("success, correct color choosen");
+        // console.log("success, correct color choosen");
+        //calling the next sequence
         if (userClickedPattern.length === gamePattern.length) {
             setTimeout(nextSequence(), 1000);
+        } else {
+
         }
 
     } else {
-        console.log("Choose correct color first");
+        //console.log("Choose correct color first");
+        var wrongAudio = new Audio("sounds/wrong.mp3");
+        wrongAudio.play();
+        $("body").addClass("game-over");
+        setTimeout(function () {
+            $("body").removeClass("game-over");
+        }, 200);
+        $("#level-title").text("Game Over, Press Any Key to Restart");
+        startOver();
     }
+}
+
+//restarting the game 
+function startOver() {
+    level = 0;
+    gamePattern = [];
+    startFlag = false;
 }
 
 function nextSequence() {
@@ -74,4 +93,4 @@ function animateOnPress(currentColor) {
 }
 
 
-// nextSequence();
+
