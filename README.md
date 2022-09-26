@@ -1,3 +1,3 @@
 # simonGame
 jQuery practicing
-Click and Play alamin11.github.io/simonGame
+Click and Play https://alamin11.github.io/simonGame
